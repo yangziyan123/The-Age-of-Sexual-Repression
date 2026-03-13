@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}关于 | 峰哥亡命天涯语录{% endblock %}
+
+{% block content %}
+<section class="container section-block about">
+  <div class="section-head reveal">
+    <h1>关于本站</h1>
+    <p>一个围绕“生存与命运”展开的语录档案项目</p>
+  </div>
+
+  <div class="about-grid">
+    <article class="about-card reveal">
+      <h2>项目缘起</h2>
+      <p>将分散的语录整理为可检索、可回看、可沉浸阅读的线上档案，保留时代语境和思辨锋芒。</p>
+    </article>
+    <article class="about-card reveal">
+      <h2>当前规模</h2>
+      <p>已收录 {{ total_quotes }} 条语录，覆盖 {{ facets.topics|length }} 个主题、{{ facets.eras|length }} 个阶段。</p>
+    </article>
+    <article class="about-card reveal">
+      <h2>收录原则</h2>
+      <p>优先收录具有观点密度、时代关照和可追溯来源的语录，并附注解以便二次理解。</p>
+    </article>
+    <article class="about-card reveal">
+      <h2>技术栈</h2>
+      <p>Flask 服务端渲染 + 轻量前端动效。保留扩展到 SQLite 检索与后台管理的能力。</p>
+    </article>
+  </div>
+</section>
+{% endblock %}
+

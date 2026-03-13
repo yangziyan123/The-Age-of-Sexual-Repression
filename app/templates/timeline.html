@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}时间轴 | 峰哥亡命天涯语录{% endblock %}
+
+{% block content %}
+<section class="container section-block">
+  <div class="section-head reveal">
+    <h1>思想时间轴</h1>
+    <p>按阶段回看语录变化，观察思想的弧线</p>
+  </div>
+
+  <div class="timeline">
+    {% for group in timeline_groups %}
+    <section class="timeline-group reveal">
+      <h2 class="timeline-era">{{ group.era }}</h2>
+      <div class="timeline-list">
+        {% for quote in group.quotes %}
+        <article class="timeline-item">
+          <div class="timeline-marker" aria-hidden="true"></div>
+          <div class="timeline-content">
+            <time datetime="{{ quote.created_at }}">{{ quote.created_at or '未标注日期' }}</time>
+            <blockquote>“{{ quote.text }}”</blockquote>
+            <a href="{{ url_for('quote.quote_detail', quote_id=quote.id) }}">查看语录</a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/timeline.js') }}" defer></script>
+{% endblock %}
+

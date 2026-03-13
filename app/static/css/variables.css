@@ -1,0 +1,21 @@
+:root {
+  --bg-paper: #17130f;
+  --bg-deep: #0d0a07;
+  --bg-panel: rgba(40, 31, 23, 0.86);
+  --bg-panel-strong: rgba(28, 22, 16, 0.95);
+  --text-main: #e6d6bb;
+  --text-soft: #c0ae90;
+  --line-muted: #6d5741;
+  --accent-bronze: #b48a56;
+  --accent-wine: #a55f5f;
+  --accent-ink: #f2e6d1;
+  --accent-gold-soft: #d6be8a;
+  --font-cn: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", serif;
+  --font-en: "Cormorant Garamond", "Times New Roman", serif;
+  --shadow-soft: 0 10px 30px rgba(4, 3, 2, 0.35);
+  --shadow-deep: 0 22px 40px rgba(4, 3, 2, 0.55);
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --container: min(1120px, 92vw);
+}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}语录总览 | 峰哥亡命天涯语录{% endblock %}
+
+{% block content %}
+<section class="container section-block">
+  <div class="section-head reveal">
+    <h1>语录总览</h1>
+    <p>按关键词、主题、情绪、阶段筛选</p>
+  </div>
+
+  <form class="filter-panel reveal" method="get" action="{{ url_for('quote.quote_list') }}">
+    <div class="filter-field filter-search">
+      <label for="q">关键词</label>
+      <input id="q" type="search" name="q" value="{{ filters.q }}" placeholder="输入语录关键词">
+    </div>
+    <div class="filter-field">
+      <label for="topic">主题</label>
+      <select id="topic" name="topic">
+        <option value="">全部主题</option>
+        {% for option in facets.topics %}
+        <option value="{{ option.name }}" {% if option.name == filters.topic %}selected{% endif %}>{{ option.name }}（{{ option.count }}）</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="filter-field">
+      <label for="mood">情绪</label>
+      <select id="mood" name="mood">
+        <option value="">全部情绪</option>
+        {% for option in facets.moods %}
+        <option value="{{ option.name }}" {% if option.name == filters.mood %}selected{% endif %}>{{ option.name }}（{{ option.count }}）</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="filter-field">
+      <label for="era">阶段</label>
+      <select id="era" name="era">
+        <option value="">全部阶段</option>
+        {% for option in facets.eras %}
+        <option value="{{ option.name }}" {% if option.name == filters.era %}selected{% endif %}>{{ option.name }}（{{ option.count }}）</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div class="filter-actions">
+      <button class="btn btn-solid" type="submit">应用筛选</button>
+      <a class="btn btn-outline" href="{{ url_for('quote.quote_list') }}">清空</a>
+    </div>
+  </form>
+
+  <p class="result-count reveal">共找到 {{ pagination.total }} 条语录</p>
+
+  <div class="quote-grid">
+    {% for quote in quotes %}
+      {% include "components/quote_card.html" %}
+    {% else %}
+      <p class="empty-state">没有匹配结果，试试更少筛选条件。</p>
+    {% endfor %}
+  </div>
+
+  <nav class="pagination reveal" aria-label="分页">
+    {% if pagination.page > 1 %}
+    <a href="{{ url_for('quote.quote_list', q=filters.q, topic=filters.topic, mood=filters.mood, era=filters.era, page=pagination.page-1) }}">上一页</a>
+    {% endif %}
+    <span>第 {{ pagination.page }} / {{ pagination.total_pages }} 页</span>
+    {% if pagination.page < pagination.total_pages %}
+    <a href="{{ url_for('quote.quote_list', q=filters.q, topic=filters.topic, mood=filters.mood, era=filters.era, page=pagination.page+1) }}">下一页</a>
+    {% endif %}
+  </nav>
+</section>
+{% endblock %}
+
