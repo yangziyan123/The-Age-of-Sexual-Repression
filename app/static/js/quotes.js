@@ -121,7 +121,7 @@ async function bootstrap() {
 
     const result = document.querySelector("#result-count");
     if (result) {
-      result.textContent = `共找到 ${pagination.total} 条语录`;
+      result.textContent = `共找到 ${pagination.total} 个问题`;
     }
 
     renderCards(pagination.items);
@@ -136,4 +136,3 @@ async function bootstrap() {
 }
 
 bootstrap();
-

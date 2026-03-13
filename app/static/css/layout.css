@@ -79,8 +79,16 @@
 
 .hero-title {
   margin-top: 1rem;
-  max-width: 18ch;
+  max-width: 32ch;
   font-size: clamp(2rem, 1.3rem + 3vw, 4rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.14em;
+}
+
+.hero-title-line {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .hero-subtitle {
@@ -295,6 +303,10 @@
   .site-nav {
     width: 100%;
     justify-content: space-between;
+  }
+
+  .hero-title-line {
+    white-space: normal;
   }
 
   .guide-shell {

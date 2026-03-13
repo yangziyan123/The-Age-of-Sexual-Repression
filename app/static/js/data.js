@@ -1,10 +1,38 @@
 const DATA_URL = "app/data/quotes.json";
 let cachedQuotes = null;
 
+function splitQuestionAnswer(text) {
+  const source = String(text || "").trim();
+  if (!source) {
+    return { question: "", answer: "" };
+  }
+
+  // Prefer Chinese question mark split: "问题？答案"
+  const questionMarkIndex = source.indexOf("？");
+  if (questionMarkIndex >= 0) {
+    const question = source.slice(0, questionMarkIndex + 1).trim();
+    const answer = source.slice(questionMarkIndex + 1).trim();
+    return { question, answer };
+  }
+
+  // Fallback to ASCII question mark.
+  const asciiQuestionMarkIndex = source.indexOf("?");
+  if (asciiQuestionMarkIndex >= 0) {
+    const question = source.slice(0, asciiQuestionMarkIndex + 1).trim();
+    const answer = source.slice(asciiQuestionMarkIndex + 1).trim();
+    return { question, answer };
+  }
+
+  return { question: source, answer: "" };
+}
+
 function normalizeQuote(rawQuote) {
   const quote = { ...rawQuote };
   quote.id = quote.id || "";
   quote.text = quote.text || "";
+  const parsed = splitQuestionAnswer(quote.text);
+  quote.question = (quote.question || parsed.question || "").trim();
+  quote.answer = (quote.answer || parsed.answer || "").trim();
   quote.author = quote.author || "峰哥";
   quote.source = quote.source || "未标注来源";
   quote.created_at = quote.created_at || "";
@@ -82,6 +110,8 @@ export function filterQuotes(quotes, { keyword = "", topic = "" }) {
     }
 
     const haystack = [
+      quote.question,
+      quote.answer,
       quote.text,
       quote.source,
       quote.commentary,
@@ -113,11 +143,12 @@ export function paginate(items, page = 1, perPage = 9) {
 
 export function buildQuoteCardHtml(quote) {
   const tagsHtml = quote.topics.map((topic) => `<span class="tag">${escapeHtml(topic)}</span>`).join("");
+  const question = quote.question || quote.text;
 
   return `
     <article class="quote-card">
       <a class="quote-card-link" href="quote.html?id=${encodeURIComponent(quote.id)}">
-        <blockquote class="quote-text">“${escapeHtml(quote.text)}”</blockquote>
+        <blockquote class="quote-text">“${escapeHtml(question)}”</blockquote>
         <div class="quote-tags">${tagsHtml}</div>
       </a>
     </article>

@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>首页 | 峰哥亡命天涯语录</title>
-    <meta name="description" content="峰哥亡命天涯语录首页。">
+    <title>首页 | 论语——峰哥亡命天涯</title>
+    <meta name="description" content="峰哥亡命天涯答案之书首页。">
     <link rel="stylesheet" href="app/static/css/variables.css">
     <link rel="stylesheet" href="app/static/css/base.css">
     <link rel="stylesheet" href="app/static/css/layout.css">
@@ -16,31 +16,31 @@
     <header class="site-header">
       <div class="container nav-shell">
         <a href="home.html" class="brand">
-          <span class="brand-cn">峰哥亡命天涯语录</span>
-          <span class="brand-en">Archive of Exile</span>
+          <span class="brand-cn">论语——峰哥亡命天涯</span>
         </a>
         <nav class="site-nav" aria-label="主导航">
           <a href="home.html">首页</a>
-          <a href="quotes.html">语录总览</a>
-          <a href="about.html">关于</a>
+          <a href="quotes.html">问题总览</a>
+          <a aria-disabled="true" href="about.html">关于</a>
         </nav>
       </div>
     </header>
 
     <main class="page-shell">
       <section class="hero container">
-        <p class="hero-kicker reveal">时代档案</p>
-        <h1 class="hero-title reveal">在动荡时代，记录一个人的思想轨迹</h1>
-        <p class="hero-subtitle reveal">不是励志手册，而是生存、命运与尊严的持续追问。</p>
+        <h1 class="hero-title reveal">
+          <span class="hero-title-line">樱花只开一季，真爱只有一次；</span>
+          <span class="hero-title-line">如果只是寂寞，那就别说爱我。</span>
+        </h1>
+        <p class="hero-subtitle reveal">关于生存、命运与尊严</p>
         <div class="hero-actions reveal">
-          <a class="btn btn-solid btn-entry" href="quotes.html">进入语录总览</a>
+          <a class="btn btn-solid btn-entry" href="quotes.html">问题总览</a>
         </div>
       </section>
 
       <section class="container section-block">
         <div class="section-head reveal">
-          <h2>今日档案</h2>
-          <p>每日自动轮换一条精选语录</p>
+          <h2>今日问题</h2>
         </div>
         <article id="featured-quote" class="featured-quote reveal"></article>
       </section>
@@ -48,15 +48,13 @@
       <section class="container section-block">
         <div class="section-head reveal">
           <h2>主题入口</h2>
-          <p>按关注问题快速进入语录集合</p>
         </div>
         <div id="topic-grid" class="topic-grid"></div>
       </section>
 
       <section class="container section-block">
         <div class="section-head reveal">
-          <h2>近期收录</h2>
-          <p>最新整理的语录记录</p>
+          <h2>近期问题</h2>
         </div>
         <div id="recent-grid" class="quote-grid"></div>
       </section>
@@ -64,7 +62,7 @@
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>以语录见时代，以文字见人心。</p>
+        <p>一切心理问题,都是性压抑。</p>
       </div>
     </footer>
 
@@ -72,4 +70,3 @@
     <script type="module" src="app/static/js/home.js"></script>
   </body>
 </html>
-

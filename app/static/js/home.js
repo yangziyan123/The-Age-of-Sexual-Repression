@@ -7,16 +7,15 @@ function renderFeatured(quote) {
   }
 
   if (!quote) {
-    container.innerHTML = "<p>暂无语录数据。</p>";
+    container.innerHTML = "<p>暂无问答数据。</p>";
     return;
   }
 
   container.innerHTML = `
-    <span class="featured-label">Featured</span>
-    <blockquote>“${escapeHtml(quote.text)}”</blockquote>
+    <span class="featured-label">今日问题</span>
+    <blockquote>“${escapeHtml(quote.question || quote.text)}”</blockquote>
     <footer>
-      <span>${escapeHtml(quote.source)}</span>
-      <a href="quote.html?id=${encodeURIComponent(quote.id)}">阅读全文</a>
+      <a href="quote.html?id=${encodeURIComponent(quote.id)}">点击查看答案</a>
     </footer>
   `;
 }
@@ -33,7 +32,7 @@ function renderTopics(quotes) {
       (topic) => `
         <a class="topic-card" href="quotes.html?topic=${encodeURIComponent(topic.name)}">
           <strong>${escapeHtml(topic.name)}</strong>
-          <span>${topic.count} 条语录</span>
+          <span>${topic.count} 个问题</span>
         </a>
       `
     )

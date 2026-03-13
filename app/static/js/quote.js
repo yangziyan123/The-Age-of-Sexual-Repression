@@ -38,15 +38,19 @@ function getRelated(quotes, currentQuote, limit = 3) {
 }
 
 function renderNotFound() {
-  const detail = document.querySelector("#detail-text");
+  const question = document.querySelector("#detail-question");
+  const answer = document.querySelector("#detail-answer");
   const topics = document.querySelector("#detail-topics");
-  if (detail) {
-    detail.textContent = "未找到对应语录。";
+  if (question) {
+    question.textContent = "未找到对应问题。";
+  }
+  if (answer) {
+    answer.textContent = "暂无答案。";
   }
   if (topics) {
     topics.textContent = "-";
   }
-  setPageTitle("语录不存在 | 峰哥亡命天涯语录");
+  setPageTitle("问题不存在 | 峰哥亡命天涯答案之书");
 }
 
 function renderNavigation(prev, next) {
@@ -59,7 +63,8 @@ function renderNavigation(prev, next) {
   if (prev) {
     prevLink.hidden = false;
     prevLink.href = `quote.html?id=${encodeURIComponent(prev.id)}`;
-    prevLink.textContent = `上一篇：${prev.text.slice(0, 24)}${prev.text.length > 24 ? "..." : ""}`;
+    const preview = prev.question || prev.text || "";
+    prevLink.textContent = `上一问：${preview.slice(0, 24)}${preview.length > 24 ? "..." : ""}`;
   } else {
     prevLink.hidden = true;
   }
@@ -67,7 +72,8 @@ function renderNavigation(prev, next) {
   if (next) {
     nextLink.hidden = false;
     nextLink.href = `quote.html?id=${encodeURIComponent(next.id)}`;
-    nextLink.textContent = `下一篇：${next.text.slice(0, 24)}${next.text.length > 24 ? "..." : ""}`;
+    const preview = next.question || next.text || "";
+    nextLink.textContent = `下一问：${preview.slice(0, 24)}${preview.length > 24 ? "..." : ""}`;
   } else {
     nextLink.hidden = true;
   }
@@ -91,16 +97,21 @@ async function bootstrap() {
       return;
     }
 
-    const detailText = document.querySelector("#detail-text");
+    const detailQuestion = document.querySelector("#detail-question");
+    const detailAnswer = document.querySelector("#detail-answer");
     const detailTopics = document.querySelector("#detail-topics");
-    if (detailText) {
-      detailText.textContent = `“${currentQuote.text}”`;
+    if (detailQuestion) {
+      detailQuestion.textContent = currentQuote.question || currentQuote.text;
+    }
+    if (detailAnswer) {
+      detailAnswer.textContent = currentQuote.answer || "暂无明确答案。";
     }
     if (detailTopics) {
       detailTopics.textContent = currentQuote.topics.join("、");
     }
 
-    setPageTitle(`语录详情 | ${currentQuote.text.slice(0, 16)}`);
+    const titleSource = currentQuote.question || currentQuote.text || "答案页";
+    setPageTitle(`答案页 | ${titleSource.slice(0, 16)}`);
     const { prev, next } = getPrevNext(quotes, currentQuote.id);
     renderNavigation(prev, next);
     renderRelated(getRelated(quotes, currentQuote, 3));
