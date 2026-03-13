@@ -23,14 +23,12 @@ def _get_positive_int(value: str, default: int = 1) -> int:
 def quote_list():
     keyword = request.args.get("q", "").strip()
     topic = request.args.get("topic", "").strip()
-    mood = request.args.get("mood", "").strip()
-    era = request.args.get("era", "").strip()
     page = _get_positive_int(request.args.get("page", "1"), default=1)
 
-    result = filter_quotes(keyword=keyword, topic=topic, mood=mood, era=era, page=page, per_page=9)
+    result = filter_quotes(keyword=keyword, topic=topic, page=page, per_page=9)
     facets = build_facets()
 
-    filters = {"q": keyword, "topic": topic, "mood": mood, "era": era}
+    filters = {"q": keyword, "topic": topic}
     return render_template("quotes.html", quotes=result["items"], pagination=result, filters=filters, facets=facets)
 
 
@@ -50,4 +48,3 @@ def quote_detail(quote_id: str):
         prev_quote=prev_quote,
         next_quote=next_quote,
     )
-

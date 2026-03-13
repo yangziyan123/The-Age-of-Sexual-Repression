@@ -1,14 +1,6 @@
 <article class="quote-card reveal">
   <a class="quote-card-link" href="{{ url_for('quote.quote_detail', quote_id=quote.id) }}">
-    <div class="quote-card-top">
-      <span class="quote-era">{{ quote.era }}</span>
-      <time class="quote-date" datetime="{{ quote.created_at }}">{{ quote.created_at or '未标注日期' }}</time>
-    </div>
     <blockquote class="quote-text">“{{ quote.text }}”</blockquote>
-    <div class="quote-meta">
-      <span>{{ quote.source }}</span>
-      <span>{{ quote.mood }}</span>
-    </div>
     <div class="quote-tags">
       {% for topic in quote.topics %}
       <span class="tag">{{ topic }}</span>
@@ -16,4 +8,3 @@
     </div>
   </a>
 </article>
-

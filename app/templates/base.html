@@ -24,7 +24,6 @@
         <nav class="site-nav" aria-label="主导航">
           <a href="{{ url_for('main.home') }}">首页</a>
           <a href="{{ url_for('quote.quote_list') }}">语录总览</a>
-          <a href="{{ url_for('main.timeline') }}">时间轴</a>
           <a href="{{ url_for('main.about') }}">关于</a>
         </nav>
       </div>
@@ -39,7 +38,6 @@
     <footer class="site-footer">
       <div class="container footer-inner">
         <p>以语录见时代，以文字见人心。</p>
-        <p class="footer-small">Flask 构建 · 历史语境风格</p>
       </div>
     </footer>
     {% endif %}

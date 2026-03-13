@@ -12,16 +12,23 @@ body {
   padding: 0;
 }
 
+html {
+  background: #ead7b7;
+}
+
 body {
   color: var(--text-main);
   background:
-    radial-gradient(circle at 18% 20%, rgba(148, 106, 52, 0.14) 0%, transparent 32%),
-    radial-gradient(circle at 86% 0%, rgba(105, 77, 39, 0.2) 0%, transparent 23%),
-    linear-gradient(180deg, #1b1612 0%, #13100d 45%, #0b0907 100%);
+    radial-gradient(circle at 18% 20%, rgba(182, 126, 64, 0.22) 0%, transparent 34%),
+    radial-gradient(circle at 82% 8%, rgba(214, 185, 135, 0.34) 0%, transparent 28%),
+    linear-gradient(180deg, #f2e5ca 0%, #eadac0 48%, #dfc7a1 100%);
   font-family: var(--font-cn);
   line-height: 1.72;
   min-height: 100vh;
   position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .site-grain {
@@ -31,12 +38,12 @@ body {
   background-image:
     repeating-linear-gradient(
       45deg,
-      rgba(255, 244, 212, 0.02) 0px,
-      rgba(255, 244, 212, 0.02) 1px,
+      rgba(84, 56, 24, 0.025) 0px,
+      rgba(84, 56, 24, 0.025) 1px,
       transparent 1px,
       transparent 4px
     );
-  opacity: 0.55;
+  opacity: 0.3;
   z-index: 0;
 }
 
@@ -69,7 +76,8 @@ blockquote {
 .page-shell {
   position: relative;
   z-index: 1;
-  padding-bottom: 5rem;
+  padding-bottom: calc(5rem + 7rem);
+  flex: 1;
 }
 
 .section-block {

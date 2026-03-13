@@ -4,18 +4,22 @@
 {% block body_class %}is-landing{% endblock %}
 
 {% block content %}
-<section class="guide-shell container reveal is-visible">
-    <div class="guide-photo-frame">
-      <img
-        src="{{ url_for('static', filename='img/fengge-photo.png') }}"
-        alt="峰哥照片"
-        loading="eager"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
-      >
+<section class="guide-shell container">
+  <div class="guide-photo-frame">
+    <img
+      src="{{ url_for('static', filename='img/fengge-photo.png') }}"
+      alt="峰哥照片"
+      loading="eager"
+      onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
+    >
+  </div>
 
-      <div class="guide-overlay">
-        <a class="btn btn-solid guide-enter" href="{{ url_for('main.home') }}">进入网站</a>
-      </div>
+  <div class="guide-copy" aria-label="一切心理问题，都是性压抑">
+    <p class="guide-vertical guide-vertical-left">都是性压抑</p>
+    <p class="guide-vertical guide-vertical-right">一切心理问题</p>
+  </div>
+  <div class="guide-bottom-action">
+    <a class="btn btn-solid btn-entry guide-enter" href="{{ url_for('main.home') }}">进入网站</a>
   </div>
 </section>
 {% endblock %}

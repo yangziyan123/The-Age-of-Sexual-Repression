@@ -1,7 +1,7 @@
 import json
 import math
 import random
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import date
 from functools import lru_cache
 from pathlib import Path
@@ -186,19 +186,3 @@ def get_prev_next_quote(quote_id: str) -> tuple[dict[str, Any] | None, dict[str,
         return previous_quote, next_quote
 
     return None, None
-
-
-def build_timeline_groups() -> list[dict[str, Any]]:
-    groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for quote in get_all_quotes():
-        group_name = quote.get("era") or "未分期"
-        groups[group_name].append(quote)
-
-    sorted_groups = sorted(
-        groups.items(),
-        key=lambda item: max((q.get("created_at") or "0000-00-00") for q in item[1]),
-        reverse=True,
-    )
-
-    return [{"era": era, "quotes": quotes} for era, quotes in sorted_groups]
-

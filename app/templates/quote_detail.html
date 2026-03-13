@@ -5,25 +5,14 @@
 {% block content %}
 <article class="container section-block quote-detail">
   <header class="quote-detail-head reveal">
-    <span class="quote-era">{{ quote.era }}</span>
     <h1>语录详情</h1>
-    <time datetime="{{ quote.created_at }}">{{ quote.created_at or '未标注日期' }}</time>
   </header>
 
   <blockquote class="quote-detail-text reveal">“{{ quote.text }}”</blockquote>
 
   <section class="detail-meta reveal">
-    <p><strong>来源：</strong>{{ quote.source }}</p>
-    <p><strong>情绪标签：</strong>{{ quote.mood }}</p>
     <p><strong>主题：</strong>{{ quote.topics|join('、') }}</p>
   </section>
-
-  {% if quote.commentary %}
-  <section class="detail-commentary reveal">
-    <h2>哲学注脚</h2>
-    <p>{{ quote.commentary }}</p>
-  </section>
-  {% endif %}
 
   <nav class="detail-nav reveal" aria-label="相邻语录导航">
     {% if prev_quote %}
@@ -38,7 +27,7 @@
 <section class="container section-block">
   <div class="section-head reveal">
     <h2>相关语录</h2>
-    <p>来自同主题或同情绪的延展阅读</p>
+    <p>来自相近主题的延展阅读</p>
   </div>
   <div class="quote-grid quote-grid-compact">
     {% for quote in related_quotes %}
@@ -47,4 +36,3 @@
   </div>
 </section>
 {% endblock %}
-

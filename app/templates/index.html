@@ -8,8 +8,7 @@
   <h1 class="hero-title reveal">在动荡时代，记录一个人的思想轨迹</h1>
   <p class="hero-subtitle reveal">不是励志手册，而是生存、命运与尊严的持续追问。</p>
   <div class="hero-actions reveal">
-    <a class="btn btn-solid" href="{{ url_for('quote.quote_list') }}">进入语录总览</a>
-    <a class="btn btn-outline" href="{{ url_for('main.timeline') }}">查看时间轴</a>
+    <a class="btn btn-solid btn-entry" href="{{ url_for('quote.quote_list') }}">进入语录总览</a>
   </div>
 </section>
 
@@ -56,17 +55,4 @@
     {% endfor %}
   </div>
 </section>
-
-<section class="container section-block">
-  <div class="section-head reveal">
-    <h2>随机延展阅读</h2>
-    <p>跨主题发现新的思考线索</p>
-  </div>
-  <div class="quote-grid quote-grid-compact">
-    {% for quote in recommended_quotes %}
-      {% include "components/quote_card.html" %}
-    {% endfor %}
-  </div>
-</section>
 {% endblock %}
-
