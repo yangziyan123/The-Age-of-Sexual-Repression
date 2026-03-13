@@ -1,39 +1,43 @@
-# 峰哥亡命天涯语录（Flask 版）
+# 峰哥亡命天涯语录（纯前端静态站）
 
-一个带有历史厚重感与哲学氛围的语录网站，支持主题筛选、关键词搜索和详情页延展阅读。
+该项目已从 Flask 迁移为纯前端静态页面，数据来自 `app/data/quotes.json`。
 
-## 1. 环境要求
-- Python 3.10+
-- pip
+## 运行方式
 
-## 2. 安装与启动
+建议使用任意静态服务器启动（不要直接双击 `html`，否则浏览器可能拦截 `fetch` 本地 JSON）。
+
+示例（Python）：
+
 ```bash
-pip install -r requirements.txt
-python run.py
+python -m http.server 8000
 ```
 
-默认访问地址：`http://127.0.0.1:5000`
+然后访问：
 
-## 3. 页面说明
-- `/` 导引页：照片与进入按钮
-- `/home` 首页：精选语录、主题入口、近期收录、随机延展
-- `/quotes` 语录总览：关键词搜索 + 主题/情绪/阶段筛选 + 分页
-- `/quotes/<id>` 语录详情：上一篇/下一篇、相关推荐
-- `/about` 关于页：项目说明与收录规模
+`http://127.0.0.1:8000`
 
-## 4. 项目结构
+## 页面
+
+- `index.html`：引导页
+- `home.html`：首页
+- `quotes.html`：语录总览（关键词 + 主题筛选 + 分页）
+- `quote.html?id=q001`：语录详情
+- `about.html`：关于页
+
+## 目录结构
+
 ```text
 app/
-  routes/
-  services/
   data/
-  templates/
+    quotes.json
   static/
-config.py
-run.py
+    css/
+    img/
+    js/
+index.html
+home.html
+quotes.html
+quote.html
+about.html
 ```
 
-## 5. 后续建议
-1. 将 `app/data/quotes.json` 迁移到 SQLite + SQLAlchemy。
-2. 为筛选与详情增加自动化测试。
-3. 增加后台录入界面（Flask-Admin 或自建管理页）。

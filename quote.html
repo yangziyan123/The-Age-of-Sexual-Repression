@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>语录详情 | 峰哥亡命天涯语录</title>
+    <meta name="description" content="峰哥亡命天涯语录详情。">
+    <link rel="stylesheet" href="app/static/css/variables.css">
+    <link rel="stylesheet" href="app/static/css/base.css">
+    <link rel="stylesheet" href="app/static/css/layout.css">
+    <link rel="stylesheet" href="app/static/css/components.css">
+    <link rel="stylesheet" href="app/static/css/animations.css">
+  </head>
+  <body>
+    <div class="site-grain" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a href="home.html" class="brand">
+          <span class="brand-cn">峰哥亡命天涯语录</span>
+          <span class="brand-en">Archive of Exile</span>
+        </a>
+        <nav class="site-nav" aria-label="主导航">
+          <a href="home.html">首页</a>
+          <a href="quotes.html">语录总览</a>
+          <a href="about.html">关于</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <article class="container section-block quote-detail">
+        <header class="quote-detail-head reveal">
+          <h1>语录详情</h1>
+        </header>
+
+        <blockquote id="detail-text" class="quote-detail-text reveal"></blockquote>
+
+        <section class="detail-meta reveal">
+          <p><strong>主题：</strong><span id="detail-topics"></span></p>
+        </section>
+
+        <nav class="detail-nav reveal" aria-label="相邻语录导航">
+          <a id="prev-link" href="#" hidden></a>
+          <a id="next-link" href="#" hidden></a>
+        </nav>
+      </article>
+
+      <section class="container section-block">
+        <div class="section-head reveal">
+          <h2>相关语录</h2>
+          <p>来自相近主题的延展阅读</p>
+        </div>
+        <div id="related-grid" class="quote-grid quote-grid-compact"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>以语录见时代，以文字见人心。</p>
+      </div>
+    </footer>
+
+    <script src="app/static/js/main.js" defer></script>
+    <script type="module" src="app/static/js/quote.js"></script>
+  </body>
+</html>
+

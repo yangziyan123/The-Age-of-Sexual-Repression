@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>首页 | 峰哥亡命天涯语录</title>
+    <meta name="description" content="峰哥亡命天涯语录首页。">
+    <link rel="stylesheet" href="app/static/css/variables.css">
+    <link rel="stylesheet" href="app/static/css/base.css">
+    <link rel="stylesheet" href="app/static/css/layout.css">
+    <link rel="stylesheet" href="app/static/css/components.css">
+    <link rel="stylesheet" href="app/static/css/animations.css">
+  </head>
+  <body>
+    <div class="site-grain" aria-hidden="true"></div>
+    <header class="site-header">
+      <div class="container nav-shell">
+        <a href="home.html" class="brand">
+          <span class="brand-cn">峰哥亡命天涯语录</span>
+          <span class="brand-en">Archive of Exile</span>
+        </a>
+        <nav class="site-nav" aria-label="主导航">
+          <a href="home.html">首页</a>
+          <a href="quotes.html">语录总览</a>
+          <a href="about.html">关于</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero container">
+        <p class="hero-kicker reveal">时代档案</p>
+        <h1 class="hero-title reveal">在动荡时代，记录一个人的思想轨迹</h1>
+        <p class="hero-subtitle reveal">不是励志手册，而是生存、命运与尊严的持续追问。</p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-solid btn-entry" href="quotes.html">进入语录总览</a>
+        </div>
+      </section>
+
+      <section class="container section-block">
+        <div class="section-head reveal">
+          <h2>今日档案</h2>
+          <p>每日自动轮换一条精选语录</p>
+        </div>
+        <article id="featured-quote" class="featured-quote reveal"></article>
+      </section>
+
+      <section class="container section-block">
+        <div class="section-head reveal">
+          <h2>主题入口</h2>
+          <p>按关注问题快速进入语录集合</p>
+        </div>
+        <div id="topic-grid" class="topic-grid"></div>
+      </section>
+
+      <section class="container section-block">
+        <div class="section-head reveal">
+          <h2>近期收录</h2>
+          <p>最新整理的语录记录</p>
+        </div>
+        <div id="recent-grid" class="quote-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>以语录见时代，以文字见人心。</p>
+      </div>
+    </footer>
+
+    <script src="app/static/js/main.js" defer></script>
+    <script type="module" src="app/static/js/home.js"></script>
+  </body>
+</html>
+
