@@ -12,7 +12,6 @@ function renderFeatured(quote) {
   }
 
   container.innerHTML = `
-    <span class="featured-label">今日问题</span>
     <blockquote>“${escapeHtml(quote.question || quote.text)}”</blockquote>
     <footer>
       <a href="quote.html?id=${encodeURIComponent(quote.id)}">点击查看答案</a>
